@@ -31,6 +31,7 @@
   <li> - npm build</li>
   <li>Salir de la carpeta client</li>
   <li> - npm install</li>
+  <li> - crear el archivo .env(copiar los datos del archivo .env_ejemplo y pegarlos en .env, remplaza las configuraciones con tu propia configuracion)</li>
   <li> - npm run start:dev</li>
 </ul>
 <p>localhost/3000 para mostrar el formulario.</p>
