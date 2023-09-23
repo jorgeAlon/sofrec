@@ -26,7 +26,7 @@
 
 <ul>
   <li>Descargar el repositorio</li>
-  <li>Entrar a la carpet sofper/client para compilar los archivos de vue</li>
+  <li>Entrar a la carpet sofrec/client para compilar los archivos de vue</li>
   <li> - npm install</li>
   <li> - npm build</li>
   <li>Salir de la carpeta client</li>
