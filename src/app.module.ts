@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
 import { MailsenderModule } from 'src/mailsender/mailsender.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { UsuariosModule } from './usuarios/usuarios.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
   imports: [
@@ -16,19 +16,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     }),
     MailsenderModule,
     UsuariosModule,
-    TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => ({
-        type: 'postgres',
-        host: 'localhost',
-        port: +5432,
-        username: 'postgres',
-        password: 'admin',
-        database: 'sofper',
-        entities: [],
-        synchronize: true,
-      }),
-    }),
+    DatabaseModule,
   ],
   controllers: [],
   providers: [],

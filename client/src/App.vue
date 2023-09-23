@@ -110,17 +110,6 @@ const submitForm = async() => {
   if (sendData.contrasena !== sendData.repetirContrasena) {
     alert('Las contraseñas no coinciden');
   } else {
-    alert('Formulario enviado');
-    
-    axios
-        .get("https://pokeapi.co/api/v2/pokemon?offset=0")
-        .then((response) => {
-          console.log({response})
-        })
-        .catch((e)=>{
-          console.log({e});
-          
-        });
     const resolveSaveForm = await axios.post(
               `${api_url}usuarios`,
               sendData,
@@ -131,6 +120,8 @@ const submitForm = async() => {
               }
               )
               .then((response)=>{
+                  alert('Usuarios registrado, se envio correo al nuevo usuario');
+
                   console.log({response});
                   return response
               })
