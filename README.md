@@ -24,7 +24,8 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+localhost/3000 para mostrar el formulario.
+localhost/3000/api para consumir el EntryPoint de POST e insertar en la DB.
 
 ## Installation
 
