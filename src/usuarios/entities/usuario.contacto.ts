@@ -27,8 +27,4 @@ export class Contacto {
     onDelete: 'CASCADE',
   })
   usuario: Usuario;
-
-  constructor(contacto: Partial<Contacto>) {
-    Object.assign(this, contacto);
-  }
 }

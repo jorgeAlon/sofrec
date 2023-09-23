@@ -20,8 +20,4 @@ export class Clave {
     onDelete: 'CASCADE',
   })
   usuario: Usuario;
-
-  constructor(contrasena: Partial<Clave>) {
-    Object.assign(this, contrasena);
-  }
 }

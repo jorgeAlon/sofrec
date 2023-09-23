@@ -1,4 +1,4 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Contacto } from './usuario.contacto';
 import { Clave } from './usuario.clave';
 
@@ -17,19 +17,14 @@ export class Usuario {
   })
   nombre: string;
 
-  @OneToMany(() => Contacto, (contacto) => contacto.usuario, {
+  @OneToOne(() => Contacto, (contacto) => contacto.usuario, {
     cascade: true,
     eager: true,
   })
-  contacto?: Contacto;
+  contacto: Contacto;
 
-  @OneToMany(() => Clave, (clave) => clave.usuario, {
+  @OneToOne(() => Clave, (clave) => clave.usuario, {
     cascade: true,
-    eager: true,
   })
-  clave?: Clave;
-
-  constructor(usuario: Partial<Usuario>) {
-    Object.assign(this, usuario);
-  }
+  clave: Clave;
 }

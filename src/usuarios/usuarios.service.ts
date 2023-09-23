@@ -25,18 +25,27 @@ export class UsuariosService {
   ) {}
 
   async create(createUsuarioDto: CreateUsuarioDto) {
-    const data: CreateUsuarioDto = { ...createUsuarioDto };
-    console.log('This action adds a new usuario', { data });
+    const { nombre, contacto, contrasena, correo } = createUsuarioDto;
+    console.log('This action adds a new usuario', [
+      nombre,
+      contacto,
+      contrasena,
+      correo,
+    ]);
     try {
-      const nuevoUzuario = this.uzerRepository.create({
-        ...data,
-        contacto: this.contactoRepository.create(data),
-        clave: this.claveRepository.create(data),
-      });
+      const dataToSend = {
+        nombre: nombre,
+        contacto: this.contactoRepository.create({
+          contacto: contacto,
+          correo: correo,
+        }),
+        clave: this.claveRepository.create({ contrasena: contrasena }),
+      };
+      const nuevoUzuario = this.uzerRepository.create(dataToSend);
       await this.uzerRepository.save(nuevoUzuario);
       const correoEnviado = this.mailService.enviarEmailusuarioNuevo(
-        { nombre: data.nombre },
-        { correo: data.correo },
+        { nombre: nombre },
+        { correo: correo },
       );
       console.log({ correoEnviado });
       return { ...nuevoUzuario };
